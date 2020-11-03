@@ -3,7 +3,7 @@ import Table from '../Table/Table'
 
 class Form extends Component {
   state = {
-    area:'all',
+    area:'',
     results:[]
   }
 
@@ -17,7 +17,7 @@ class Form extends Component {
   }
 
   handleChange = (e) => {
-    this.setState({area:e.target.value})
+    this.setState({area: e.target.value})
     fetch('http://worldtimeapi.org/api/timezone/' + e.target.value)
       .then(res => res.json())
       .then(json => {
@@ -28,7 +28,7 @@ class Form extends Component {
   render(){
     return(
       <div>
-        <form id='dropdown'>
+        <form className='dropdown'>
           <select onChange={this.handleChange} name='areas'>
             <option value=''>All</option>
             <option value='America'>America</option>

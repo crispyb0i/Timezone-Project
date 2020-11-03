@@ -1,3 +1,7 @@
-#timezone-table {
+.timezone-table {
   margin: 20px auto;
+}
+
+tr {
+  padding: 50px;
 }

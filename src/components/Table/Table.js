@@ -27,10 +27,7 @@ class Table extends Component {
   handleClick = async (zone) => {
     await fetch('http://worldtimeapi.org/api/timezone/' + zone)
       .then(res => res.json())
-      .then(json => {
-        this.setState({timezone:json})
-        console.log(json)
-      })
+      .then(json => this.setState({timezone:json}))
     this.showModal()
   }
 
@@ -44,8 +41,8 @@ class Table extends Component {
 
   render(){
     return (
-      <div>
-        <table id='timezone-table'>
+      <div id='table-div'>
+        <table className='timezone-table'>
           <tr>
             <th>Time Zone Name</th>
             <th>Area</th>
@@ -62,12 +59,11 @@ class Table extends Component {
           )}
         </table>
         <Modal show={this.state.modal} handleClose={this.hideModal}>
-          <h3>{this.state.timezone.timezone}</h3>
+          <h3 style={{fontSize:'30px'}}>{this.state.timezone.timezone}</h3>
           <p><strong>Time Zone Abbreviation: </strong>{this.state.timezone.abbreviation}</p>
           <p><strong>Datetime: </strong>{this.state.timezone.utc_datetime}</p>
         </Modal>
       </div>
-
     )
   }
 }
